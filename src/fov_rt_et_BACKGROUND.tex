@@ -18,8 +18,12 @@ The fovea, which makes out roughly $2$\degree\ of human eye-sight, is the area i
 As such, we position the fovea on the stimulus we wish to observe.
 Along the outer reaches of the fovea, and extending $5$\degree\ from the center of the fovea, lie the parafovea which, while still quite acute, is considerably less keen than the fovea.
 The remaining (majority) of the human vision we may classify as peripheral viseon which, while not acute as fovea or parafovea, is still central to human vision.
+We may refer to the decrease of the receptive qualities of human eye-sight to foveation.
 
 \subsection{Foveated rendering}
-\ldots
+In computer graphics aforementioned eye-sight limitations are often ignored; real-time graphics applications such as video games rendering complex scenes at full-resolution independently of where the observer is looking.
+One might argue that vast amounts of processing power is spent on rendering high resolution imagery for human peripheral vision which may not necessarily appreciate high image quality.
+After all, a $5$\degree\ foveal area is likely a small component of most display systems.
 
-% Utilizing foveation in image processing is not a new idea\cite{levoy90}
+Hence, in real-time graphics where time is of the essence, it may be benificial to only render those parts of a framebuffer which the eye may appreciate, at high quality; reducing rendering complexity for a potentially large area of the display.
+Utilizing foveation in image processing is not a new idea\cite{levoy90} yet one that seems to have escaped developers of consumer real-time graphics, possibly due to the lack of low-latency eye tracking devices in consumer markets.
