@@ -1,7 +1,10 @@
 % fov_rt_et_CONTRIBUTION.tex
 
 \section{Contribution}
-\ldots
+The ray tracing renderer devised for the purpose of this study adheres to the model presented by Garc{\'i}a et al.; devised in DirectCompute using C$++$.
+The algorithm renders the scene with the help of three distinct steps that compiles a number of rays equal to that of the application window resolution, perform intersections tests on each ray with scene geometry to establish the closest intersected geometry, and finally draws the scene to the framebuffer using scene lights- and geometry in order to establish what areas of the scene are in shadow.
+The ray tracing algorithm is presented as pseudocode in algorithm \ref{algrt}.
+Note that some elements of the algorithm are not featured in-pseudo-code, such as the comparison of closest intersected scene geometry, in order to keep the code short and concise.
 
 \begin{algorithm}
 \begin{algorithmic}[1]
@@ -26,6 +29,23 @@
 \end{algorithmic}
 \end{algorithm}
 
+In order to optimize this algorithm to make it run sufficiently fast on the platform at hand for the purpose of this experiment we made use of a Tobii EyeX Dev Kit to establish where on the screen the observer is focusing his or her gaze.
+Using this information, we may render only parts of the application window (where the user has his or her gaze fixation) at full resolution; rendering those areas of the window in the user's peripheral vision at a lower resolution.
+Since, as described in algorithm \ref{algrt}, the total number of computed rays is based off the texel grid of the framebuffer this may drastically reduce the number of rays required to render a scene.
+
+% Tobii EyeX Devkit Controller
+% System specifications
+% Screen
+\subsection{Hardware}
+For the purpose of this experiment, we make use of the Tobii EyeX Devkit Controller, which is a consumer-level corneal-reflection eye tracking device, which may the positions of an oberserver's gaze on a computer screen.
+The EyeX controller, while still a developer's prototype variant, is a fairly competent device; the consumer version expected to be released later this year.
+
+For the screen, we use a $23''$ $510$mm~$\times$~$287$mm Samsung~Syncmaster~$2343$ monitor, beneath which the eye tracking device is placed.
+
+Effectively, this requires multiple render targets for each level of quality we wish to render.
+
+\subsection{Software}
+
 \begin{algorithm}
 \begin{algorithmic}[1]
 \Procedure{raytrace}{$rays, raysCnt$}
@@ -44,8 +64,9 @@
 % Tobii C/C++ SDK
 % Fovea
 
-% Tobii EyeX Devkit Controller
-% System specifications
-% Screen
-\subsection{Hardware}
-\ldots
+% app runs in 1152 x 1152
+
+% 510 x 287
+% 2048 x 1152
+% A five degree parafovea brings about an area, positioned 700mm from the screen,
+% of about 30.56mm, which in pixels, would represent about 122.68 pixels; a small percentage of the full app resolution. Note that this percentage would be even smaller, should the application run at even higher resolutions.
