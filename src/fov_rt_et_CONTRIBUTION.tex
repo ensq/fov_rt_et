@@ -2,3 +2,50 @@
 
 \section{Contribution}
 \ldots
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+\Procedure{raytrace}{$rays, reflCnt$}
+\caption{Na{\"i}ve ray tracing algorithm}\label{algrt}
+\State $rays\gets$\Call{GenRays}{screen, frustum}
+\While{$reflCnt>0$}
+\ForAll{$rays$}\Comment{for each pixel}
+\If {\Call{intersects}{ray, objs}}
+    \State $obj\gets objs$
+\EndIf
+%\Require $obj$ % If you're to be entirely precise.
+\ForAll{$lights$}
+\State $color\gets$\Call{Shadow}{ray, obj}
+\State $color\gets$\Call{Lighting}{obj}
+\EndFor
+\State $backbuffer\gets color$
+\EndFor
+\State $reflCnt\gets reflCnt - 1$
+\EndWhile
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+\Procedure{raytrace}{$rays, raysCnt$}
+\caption{Foveated ray tracing algorithm}\label{algfov}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+% RAY TRACING:
+% DirectX DirectCompute
+% C++
+% The ray tracing algorithm
+% Pseudo-code
+
+% EYE TRACKING:
+% Tobii C/C++ SDK
+% Fovea
+
+% Tobii EyeX Devkit Controller
+% System specifications
+% Screen
+\subsection{Hardware}
+\ldots
