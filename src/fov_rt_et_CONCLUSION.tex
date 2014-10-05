@@ -31,8 +31,19 @@ Although gaze position latency and aliasing issues in the low resolution render 
 That being said, foveation accomodating for considerably better performance is a good-enough compromise.
 
 \subsection{Future work}
-\ldots
+Currently, the foveation methodology used causes somewhat severe overdraw, which could worsen should additional FOVs be added.
+While the overdraw, with only peripheral and parafoveal render targets, causes only those rays positioned behind the high resolution FOV (spanning a fourth of the high-resolution numer of rays) to be computed without having any impact on the scene, the number of redundant rays cast may be significantly increased with the addition of more FOVs, especially as more highly detailed FOVs would suffer overdraw.
+Note, however, that the current implementation only causes overdraw of a portion of the low-resolution peripheral FOV.
 
-% Problems that real-time foveated ray tracing faces:
-% Peripheral anti-aliasing issues
-% Eye tracking latency and accuracy
+Furthermore, and an issue more increasingly a problem with quality reduction of peripheral and parafoveal views, aliasing issues outside of the foveal area may cause jitter in the peripheral vision of the observer.
+While advanced anti-aliasing techniques may be considered to lessen this issue, blurring might also be a viable candidate to reduce such jitter; especially along the borders of FOVs where varying levels of quality is made paricularily apperent.
+
+Additionally, while we may expect consumer-level eye tracking devices to improve in terms of gaze positional latency and accuracy, these attributes are vital to foveation in real-time rendering in order to maintain the illusion of consistant quality in a scene.
+The latency in garnering positional data for a gaze-contingent application such as the one presented in this document, may cause the application to fall behind.
+In terms of real-time rendering, this causes the high-quality render target that the user ought be seeing, to lag behind and thus causing the user to look upon a lower quality render of the scene he or she expects.
+Most of the times, this is only an issue if the eye tracker temporarily cannot locate an observer's eyes, or in combination with accuracy issues.
+
+Another issue presenting itself in terms of eye tracking hardware is that of gaze positional accuracy, which may cause the high quality render to be offset erronously in relation to an observer's gaze.
+In particular, this was discovered to be an issue for especially small FOVs - such as an high-quality foveal render target (making out only $2$\degree\ of the viewer's vision).
+
+However, these hardware issues are expected to improve in the near-future; hopefully as eye tracking devices become more common in consumer-markets.
