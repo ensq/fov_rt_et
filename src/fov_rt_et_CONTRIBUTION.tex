@@ -6,6 +6,7 @@ The algorithm renders the scene with the help of three distinct steps that compi
 The ray tracing algorithm is presented as pseudocode in algorithm \ref{algrt}.
 Note that some elements of the algorithm are not featured in-pseudo-code, such as the comparison of closest intersected scene geometry, in order to keep the code short and concise.
 
+% Rephrase this. The algorithm isn't a 'naive one'; what you mean is that it's the 'original' algorithm. Better phrasing?
 \begin{algorithm}
 \begin{algorithmic}[1]
 \Procedure{raytrace}{$rays, reflCnt$}
@@ -33,9 +34,6 @@ In order to optimize this algorithm to make it run sufficiently fast on the plat
 Using this information, we may render only parts of the application window (where the user has his or her gaze fixation) at full resolution; rendering those areas of the window in the user's peripheral vision at a lower resolution.
 Since, as described in algorithm \ref{algrt}, the total number of computed rays is based off the texel grid of the framebuffer this may drastically reduce the number of rays required to render a scene.
 
-% Tobii EyeX Devkit Controller
-% System specifications
-% Screen
 \subsection{Hardware}
 For the purpose of this experiment, we make use of the Tobii EyeX Devkit Controller, which is a consumer-level corneal-reflection eye tracking device, which may the position the gaze of an oberserver on a computer screen.
 The EyeX controller, while still a developer's prototype variant, is a fairly competent device; the consumer version expected to be released later this year.
@@ -50,8 +48,25 @@ The experiment is performed on a Windows~8.1 system with the following specifica
 For the screen, we use a $23''$ $510$mm~$\times$~$287$mm Samsung~Syncmaster~$2343$ monitor, beneath which the eye tracking device is placed for the duration of the experiment.
 
 \subsection{Software}
+For retrieval of gaze positional data and communication with the eye tracking device, we utilize the Tobii C/C$++$~SDK.
 
-% Effectively, this requires multiple render targets for each level of quality we wish to render.
+In order to achieve varying levels of quality - or resolution - in the field-of-vision, the rendering process is subdivided into a number of 'FOV's (short for fovea, parafovea, etc.); each it's own render target.
+Using an arbitrary of these FOVs, we may vary the quality of the rendered scene accross the user's field of vision.
+For the purpose of the experiment, although FOVs for both foveal-, parafoveal-, and peripheral vision having been prototyped, we limit the variance in quality to that of parafoveal and peripheral vision.
+Thus, we use render the scene at two different resolutions during the experiment; corresponding to parafoveal- and peripheral vision.
+This is due to the EyeX controller device; being a consumer-level developer's kit, the device tracking may bring about a jittery render target when the designated area is as small as $2$\degree\ (human foveal vision) of the oberver's view.
+As this is considerably less noticable with a larger area (giving the eye tracking device more time to garner gaze positional data when the user moves his or her eyes), rendering the entirety of the parafoveal vision (%\degree ) at high quality was deemed more appropriate.
+After all, the purposes of foveated rendering is to reduce computational complexity whilst maintaining percieved scene quality.
+
+For our setup, the observer is positioned 700mm from the screen which is the distance relayed appropriate by the device.
+The application window resolution is that of $1152\times 1152$, a resolution chosen due to it being the highest our system setup could display whilst keeping the resolution square.
+A $5$\degree\ parafovea thus bring about an area of roughly $31$mm$\times $$31$mm, which represents, for the utilized screen, roughly $123\times 123$~pixels; a small percentage of the application window resolution.
+Note, however, that this component would be considerably smaller should the application run at even higher resolutions.
+In fact, presuming the same system setup and distance to the screen, the pixel resolution within the observer's foveal vision should remain constant.
+
+For the peripheral vision, or the low-quality render target, we chose to render the scene at only a fourth of the full-resolution.
+Accordingly, our rendering algorithm is performed in an additional two steps; wherein the scene is rendered at full-resolution in a grid of only $123\times 123$ pixels, while the rest of the framebuffer is rendered at a fourth of full-resolution and subsequently upscaled to fit the application window.
+The high-resolution parafoveal framebuffer is then placed copied onto the screen framebuffer at the location where the observer is currently focusing his or her gaze.
 
 \begin{algorithm}
 \begin{algorithmic}[1]
@@ -60,20 +75,3 @@ For the screen, we use a $23''$ $510$mm~$\times$~$287$mm Samsung~Syncmaster~$234
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
-
-% RAY TRACING:
-% DirectX DirectCompute
-% C++
-% The ray tracing algorithm
-% Pseudo-code
-
-% EYE TRACKING:
-% Tobii C/C++ SDK
-% Fovea
-
-% app runs in 1152 x 1152
-
-% 510 x 287
-% 2048 x 1152
-% A five degree parafovea brings about an area, positioned 700mm from the screen,
-% of about 30.56mm, which in pixels, would represent about 122.68 pixels; a small percentage of the full app resolution. Note that this percentage would be even smaller, should the application run at even higher resolutions.
