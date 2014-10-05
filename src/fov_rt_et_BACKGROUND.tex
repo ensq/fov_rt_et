@@ -6,32 +6,32 @@ In computer graphics, rays often originate from the observer view-point based on
 Each ray subsequently identifies the closest scene element it may intersect, from which lighting, shadows, and other effects may be computed.
 
 On the contrary, modern real-time graphics commonly use the rendering technique of rasterization.
-Rasterization technologies, which are often significantly faster than ray tracing methodologies to map scene geometry to a computer screen, often require complicated methods to approximate (often roughly) effects such as shadows or reflections; effects that might be described as trivial in terms of ray tracing.
+Rasterization technologies, which are often significantly faster than ray tracing methodologies to map scene geometry to a computer screen, often require complicated methods to approximate (often roughly) effects such as shadows or reflections; effects that might be described as trivial to achieve in terms of ray tracing.
 Yet, rasterization techniques are often preferred to ray tracing renderers due to their superior speed and 'good-enough' results.
 
-Some of the performance gains rasterization methodologies often have over ray tracing is that of efficient data coherence behaviors, inducing high computational complexity.
+Some of the performance gains rasterization methodologies often have over ray tracing is that of efficient data coherence, the lack of which may induce high computational complexity.
 While the rasterization process may cache and share computed results, ray tracing techniques commonly eveluate each ray individually; especially considering each ray may collide with different geometry.
 Furthermore, complex geometry stresses the importance of acceleration structures for real-time ray tracing.
 While acceleration structures, such as BVH trees, may offer great performance improvements, high-resolution render targets, such as emergent 4k resolutions, may come at high initial costs.
 
 \subsection{Eye tracking}
 Eye tracking is the process of sampling an observers gaze, often in relation to a surface such as a computer screen.
-For the purposes of eye tracking, one may use an eye tracker, which is a device used to establish and measure positions of an observers eyes\cite{duchowski07}; such as \textit{fixations} and intermediate \textit{saccades}\cite{rayner98}.
+For the purposes of eye tracking, one may use an eye tracker, which is a device used to establish and measure positions of an observer's eyes\cite{duchowski07}; such as \textit{fixations} and intermediate \textit{saccades}\cite{rayner98}.
 The most common eye tracking device type used today is possibly the optical eye tracker; which uses a sequence of video images to measure movement of the eyes\cite{duchowski07}.
 Recently, eye tracking technologies - although not a new subject to researchers - have become more accessible to the general public, mayhaps most notably with the recent Tobii EyeX Controller devkit.
 
-\subsection{Limitations in human vision}
+\subsection{Human vision}
 Human vision may be thought of as being subdivided in three distinct zones; the foveal, parafoveal, and peripheral vision\cite{rayner98}.
 The fovea, which makes out roughly $2$\degree\ of human eye-sight, is the area in which the human eye features the outmost acuity due to vast concentrations of visual receptors.
 As such, we position the fovea on the stimulus we wish to observe.
 Along the outer reaches of the fovea, and extending $5$\degree\ from the center of the fovea, lie the parafovea which, while still quite acute, is considerably less keen than the fovea.
 The remaining (majority) of the human vision we may classify as peripheral vision which, while not acute as fovea or parafovea, constitutes the remaining visual field of roughtly $135$\degree\ vertical- and $160$\degree\ horizontal vision\cite{guenter12}.
-We may refer to the decrease of the receptive qualities of human eye-sight to foveation.
+We may refer to the decrease of the receptive qualities of human eye-sight as foveation.
 
 \subsection{Foveated rendering}
-In computer graphics aforementioned eye-sight limitations are often ignored; real-time graphics applications such as video games rendering complex scenes at full-resolution independently of where the observer is looking.
+In computer graphics, aforementioned eye-sight limitations are often ignored; real-time graphics applications, such as video games, rendering complex scenes at full-resolution independently of where the observer is looking.
 One might argue that vast amounts of processing power is spent on rendering high resolution imagery for human peripheral vision which may not necessarily appreciate high image quality.
-After all, a $5$\degree\ foveal area is likely a small component of most display systems.
+After all, a $5$\degree\ parafoveal area is likely a small component of most display systems.
 
-Hence, in real-time graphics where time is of the essence, it may be benificial to only render those parts of a framebuffer which the eye may appreciate, at high quality; reducing rendering complexity for a potentially large area of the display.
-Utilizing foveation in image processing is not a new idea\cite{levoy90} yet one that seems to have escaped developers of consumer real-time graphics, possibly due to the lack of low-latency eye tracking devices in consumer markets.
+Hence, in real-time graphics - where time is of the essence - it may be benificial to render only those parts of a framebuffer which the eye may appreciate at high quality; reducing rendering complexity for a potentially large area of the display.
+Utilizing foveation in image processing is not a new idea\cite{levoy90}, yet one that seems to have escaped developers of real-time graphics, possibly due to the lack of low-latency eye tracking devices in consumer markets.
