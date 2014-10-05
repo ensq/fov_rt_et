@@ -37,14 +37,21 @@ Since, as described in algorithm \ref{algrt}, the total number of computed rays 
 % System specifications
 % Screen
 \subsection{Hardware}
-For the purpose of this experiment, we make use of the Tobii EyeX Devkit Controller, which is a consumer-level corneal-reflection eye tracking device, which may the positions of an oberserver's gaze on a computer screen.
+For the purpose of this experiment, we make use of the Tobii EyeX Devkit Controller, which is a consumer-level corneal-reflection eye tracking device, which may the position the gaze of an oberserver on a computer screen.
 The EyeX controller, while still a developer's prototype variant, is a fairly competent device; the consumer version expected to be released later this year.
 
-For the screen, we use a $23''$ $510$mm~$\times$~$287$mm Samsung~Syncmaster~$2343$ monitor, beneath which the eye tracking device is placed.
+The experiment is performed on a Windows~8.1 system with the following specifications:
+\begin{itemize}
+\setlength\itemsep{0em}
+\item Intel Q9550 Quad Core 2.83GHz
+\item ATI Radeon HD 5800
+\end{itemize}
 
-Effectively, this requires multiple render targets for each level of quality we wish to render.
+For the screen, we use a $23''$ $510$mm~$\times$~$287$mm Samsung~Syncmaster~$2343$ monitor, beneath which the eye tracking device is placed for the duration of the experiment.
 
 \subsection{Software}
+
+% Effectively, this requires multiple render targets for each level of quality we wish to render.
 
 \begin{algorithm}
 \begin{algorithmic}[1]
