@@ -3,13 +3,14 @@
 \section{Conclusion}
 The scene used for the purpose of this experiment is a mesh consisting of $12$ vertices that are indexed to create $14$ triangles, which are scaled, rotated, and translated into the scene.
 This mesh, although positioned in a different manner in relation to the camera, is presented in figure~\ref{fig:fov}.
-Furthermore, the scene is lit using three pointlights; everyone of which may cast shadows.
+Furthermore, the scene is lit using three pointlights; each of which may cast shadows.
 
-In order to render the scene, which rotates every given frame, the renderer performs three reflections thus repeating the intersection- and lighting stages of the algorithm three times per pixel.
+In order to render the scene, which rotates every given frame, the renderer computes three reflections thus repeating the intersection- and lighting stages of the algorithm three times per pixel.
 During the experiment, the higher-resolution parafoveal render target was locked to be positioned in the center the screen.
 As such, the eye tracking had no influence on the results.
 
-We collected elapsed times for each stage, concatenated if a stage was performed multiple times (for intersection- and lighting stages), during $1000$ frames.
+We collected elapsed times for each stage during $1000$ frames.
+If a stage was computed several times (computing reflections with intersection- and lighting stages) the elapsed times were concatenated.
 The mean values of these measurements are presented in milliseconds in table~\ref{tab:res}.
 
 \begin{table}[h]
@@ -27,21 +28,21 @@ From the measurements presented in table~\ref{tab:res}, we may establish that fo
 This reduction was significant enough to run the ray tracer in high-definition resolutions, and thus made it possible for us increase the application resolution to above that of $800\times 800$ which we were previously limited to.
 
 Furthermore, the foveated rendering is mostly transparent and not too noticable.
-Although gaze position latency and aliasing issues in the low resolution render target (in the peripheral vision) is noticable, it does not dispruct the observer's perception of the scene.
+Although gaze position latency and aliasing issues in the low resolution render target (in the peripheral vision) is noticable, it does not particularily disrupt the observer's perception of the scene.
 That being said, foveation accomodating for considerably better performance is a good-enough compromise.
 
 \subsection{Future work}
 Currently, the foveation methodology used causes somewhat severe overdraw, which could worsen should additional FOVs be added.
-While the overdraw, with only peripheral and parafoveal render targets, causes only those rays positioned behind the high resolution FOV (spanning a fourth of the high-resolution numer of rays) to be computed without having any impact on the scene, the number of redundant rays cast may be significantly increased with the addition of more FOVs, especially as more highly detailed FOVs would suffer overdraw.
+While the overdraw, with only peripheral and parafoveal render targets, causes only those rays positioned behind the high resolution FOV (spanning a fourth of the high-resolution number of rays) to be computed without having any impact on the scene, the number of redundant rays cast may be significantly increased with the addition of more FOVs, especially as more highly detailed FOVs would suffer overdraw.
 Note, however, that the current implementation only causes overdraw of a portion of the low-resolution peripheral FOV.
 
 Furthermore, and an issue more increasingly a problem with quality reduction of peripheral and parafoveal views, aliasing issues outside of the foveal area may cause jitter in the peripheral vision of the observer.
-While advanced anti-aliasing techniques may be considered to lessen this issue, blurring might also be a viable candidate to reduce such jitter; especially along the borders of FOVs where varying levels of quality is made paricularily apperent.
+While advanced anti-aliasing techniques may be considered to lessen this issue, blurring might also be a viable candidate to reduce such jitter; especially along the borders of FOVs where varying levels of quality is made particularily apperent.
 
-Additionally, while we may expect consumer-level eye tracking devices to improve in terms of gaze positional latency and accuracy, these attributes are vital to foveation in real-time rendering in order to maintain the illusion of consistant quality in a scene.
-The latency in garnering positional data for a gaze-contingent application such as the one presented in this document, may cause the application to fall behind.
+Additionally, while we may expect consumer-level eye tracking devices to improve in terms of gaze positional latency and accuracy, these attributes are vital to real-time rendering foveation in order to maintain the illusion of consistent quality in a scene.
+The latency in garnering positional data for a gaze-contingent application, such as the one presented in this document, may cause the application to fall behind.
 In terms of real-time rendering, this causes the high-quality render target that the user ought be seeing, to lag behind and thus causing the user to look upon a lower quality render of the scene he or she expects.
-Most of the times, this is only an issue if the eye tracker temporarily cannot locate an observer's eyes, or in combination with accuracy issues.
+Most of the time, this is only an issue if the eye tracker temporarily cannot locate an observer's eyes, or in combination with accuracy issues.
 
 Another issue presenting itself in terms of eye tracking hardware is that of gaze positional accuracy, which may cause the high quality render to be offset erronously in relation to an observer's gaze.
 In particular, this was discovered to be an issue for especially small FOVs - such as an high-quality foveal render target (making out only $2$\degree\ of the viewer's vision).
