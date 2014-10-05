@@ -6,11 +6,10 @@ The algorithm renders the scene with the help of three distinct steps that compi
 The ray tracing algorithm is presented as pseudocode in algorithm \ref{algrt}.
 Note that some elements of the algorithm are not featured in-pseudo-code, such as the comparison of closest intersected scene geometry, in order to keep the code short and concise.
 
-% Rephrase this. The algorithm isn't a 'naive one'; what you mean is that it's the 'original' algorithm. Better phrasing?
 \begin{algorithm}
 \begin{algorithmic}[1]
 \Procedure{raytrace}{$rays, reflCnt$}
-\caption{Na{\"i}ve ray tracing algorithm}\label{algrt}
+\caption{Ray tracing algorithm}\label{algrt}
 \State $rays\gets$\Call{GenRays}{screen, frustum}
 \While{$reflCnt>0$}
 \ForAll{$rays$}\Comment{for each pixel}
@@ -68,10 +67,4 @@ For the peripheral vision, or the low-quality render target, we chose to render 
 Accordingly, our rendering algorithm is performed in an additional two steps; wherein the scene is rendered at full-resolution in a grid of only $123\times 123$ pixels, while the rest of the framebuffer is rendered at a fourth of full-resolution and subsequently upscaled to fit the application window.
 The high-resolution parafoveal framebuffer is then placed copied onto the screen framebuffer at the location where the observer is currently focusing his or her gaze.
 
-\begin{algorithm}
-\begin{algorithmic}[1]
-\Procedure{raytrace}{$rays, raysCnt$}
-\caption{Foveated ray tracing algorithm}\label{algfov}
-\EndProcedure
-\end{algorithmic}
-\end{algorithm}
+% Consider adding a visualization, or a screenshot, here.
