@@ -1,19 +1,16 @@
 % fov_rt_et_CONCLUSION.tex
 
 \section{Conclusion}
-\ldots
+The scene used for the purpose of this experiment is a mesh consisting of $12$ vertices that are indexed to create $14$ triangles, which are scaled, rotated, and translated into the scene.
+This mesh, although positioned in a different manner in relation to the camera, is presented in figure~\ref{fig:fov}.
+Furthermore, the scene is lit using three pointlights; everyone of which may cast shadows.
 
-% Desribe the scene
-% Vertex count
-% three reflections
+In order to render the scene, which rotates every given frame, the renderer performs three reflections thus repeating the intersection- and lighting stages of the algorithm three times per pixel.
+During the experiment, the higher-resolution parafoveal render target was locked to be positioned in the center the screen.
+As such, the eye tracking had no influence on the results.
 
-% Describe experiment
-% Fixation of foveated area
-% scene
-% Performed 1000 times
-% Mean values presented in table
-
-% Over 90% reduction in all stages
+We collected elapsed times for each stage, concatenated if a stage was performed multiple times (for intersection- and lighting stages), during $1000$ frames.
+The mean values of these measurements are presented in milliseconds in table~\ref{tab:res}.
 
 \begin{table}[h]
 \begin{tabular}{lll}
@@ -23,22 +20,19 @@
   Lighting & 18.01 ms & 1.72 ms
 \end{tabular}
 \caption{Mean elapsed time in milliseconds for the ray tracing shader stages for non-foveated and foveated samples. Note that the latter two shader stages are performed multiple times (one per reflection); the elapsed times of which are concatenated for these samples.}
+\label{tab:res}
 \end{table}
+
+From the measurements presented in table~\ref{tab:res}, we may establish that foveation reduced execution time of over $90\%$ in all three ray tracing stages.
+This reduction was significant enough to run the ray tracer in high-definition resolutions, and thus made it possible for us increase the application resolution to above that of $800\times 800$ which we were previously limited to.
+
+Furthermore, the foveated rendering is mostly transparent and not too noticable.
+Although gaze position latency and aliasing issues in the low resolution render target (in the peripheral vision) is noticable, it does not dispruct the observer's perception of the scene.
+That being said, foveation accomodating for considerably better performance is a good-enough compromise.
 
 \subsection{Future work}
 \ldots
 
 % Problems that real-time foveated ray tracing faces:
 % Peripheral anti-aliasing issues
-% Eye tracking latency
-
-%% Avg:
-%% 0.0897236674
-%% 1.05272049
-%% 1.72431991
-%% EVE:res caterpillar$ python avg.py 
-
-%% Avg:
-%% 1.3688513
-%% 12.3195429
-%% 18.0143106
+% Eye tracking latency and accuracy
