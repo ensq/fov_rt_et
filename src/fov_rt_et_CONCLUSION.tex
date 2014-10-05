@@ -18,10 +18,11 @@
 \begin{table}[h]
 \begin{tabular}{lll}
   & Non-foveated & Foveated \\
-  Generate Rays & 1.36\phantom{0} ms        & 0.09 ms \\
-  Intersection  & 12.32 ms       & 1.05 ms \\
-  Lighting      & 18.01 ms       & 1.72 ms
+  Generate Rays & 1.36\phantom{0} ms & 0.09 ms \\
+  Intersection & 12.32 ms & 1.05 ms \\
+  Lighting & 18.01 ms & 1.72 ms
 \end{tabular}
+\caption{Mean elapsed time in milliseconds for the ray tracing shader stages for non-foveated and foveated samples. Note that the latter two shader stages are performed multiple times (one per reflection); the elapsed times of which are concatenated for these samples.}
 \end{table}
 
 \subsection{Future work}
