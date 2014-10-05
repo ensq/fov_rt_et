@@ -67,4 +67,11 @@ For the peripheral vision, or the low-quality render target, we chose to render 
 Accordingly, our rendering algorithm is performed in an additional two steps; wherein the scene is rendered at full-resolution in a grid of only $123\times 123$ pixels, while the rest of the framebuffer is rendered at a fourth of full-resolution and subsequently upscaled to fit the application window.
 The high-resolution parafoveal framebuffer is then placed copied onto the screen framebuffer at the location where the observer is currently focusing his or her gaze.
 
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=1.0\linewidth]{img/fov_rt_et.png}
+  \caption{An $800\times 800$ foveated scene. The observer's gaze is positioned on the cube. Note that the surrounding scenery, including the cube's reflection in the plane, is rendered at a lower resolution. This particular scene, on the contrary to the experiment, renders the peripheral areas in an eighth of the full-resolution in order to make the foveated effect more prominent and noticable.}
+  \label{fig:fov}
+\end{figure}
+
 % Consider adding a visualization, or a screenshot, here.
