@@ -1,23 +1,27 @@
 % fov_rt_et.tex
-\documentclass[12pt,twocolumn]{article}
+\input{EGauthorGuidelines-cgf-sub.tex}
 
-\usepackage{natbib} % Used to reduce whitespace in bibliography.
 \usepackage{gensymb} % \degree\ command.
 \usepackage{algorithm} % Algorithm environment for pseudocode.
 \usepackage{algpseudocode} % Pseudocode package.
 \usepackage{graphicx} % PNG figures.
 \usepackage{hyperref} % Urls.
 
-\setlength{\bibsep}{0.0pt}
+\title[Foveated Real-time Ray Tracing]{Foveated Real-time Ray Tracing}
+
+\author[E. Nilsson]
+       {E. Nilsson$^{1}$\\
+         $^1$Blekinge Institute of Technology, Karlskrona, Sweden
+       }
+
+% if the Editors-in-Chief have given you the data, you may uncomment
+% the following five lines and insert it here
+%
+% \volume{27}   % the volume in which the issue will be published;
+% \issue{1}     % the issue number of the publication
+% \pStartPage{1}      % set starting page
 
 \begin{document}
-
-% Potential titles:
-% Facilitating real-time raytracing using consumer eye-tracking devices
-% Foveated real-time raytracing
-\title{Foveated Real-time Ray Tracing}
-\author{Eric Nilsson}
-\date{\today}
 
 \maketitle
 
@@ -33,6 +37,6 @@ The devised solution is open-source, and may be accessed via this link:
 \url{http://bit.ly/FoveatedRaytracing}
 
 \bibliography{fov_rt_et}{}
-\bibliographystyle{plain}
+\bibliographystyle{eg-alpha}
 
 \end{document}

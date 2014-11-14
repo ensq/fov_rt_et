@@ -10,6 +10,9 @@ fov_rt_et.pdf
 ## Other garbage:
 *~
 
+## Eurographics garbage:
+*.lbl
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
