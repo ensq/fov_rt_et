@@ -23,6 +23,13 @@
 \restylefloat*{figure}
 \restylefloat*{table}
 
+\let\OLDthebibliography\thebibliography
+\renewcommand\thebibliography[1]{
+  \OLDthebibliography{#1}
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{0pt plus 0.3ex}
+}
+
 \title[Foveated Real-time Ray Tracing]{Foveated Real-time Ray Tracing}
 
 \author[E. Nilsson]
