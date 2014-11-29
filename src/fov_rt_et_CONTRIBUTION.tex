@@ -1,6 +1,31 @@
 % fov_rt_et_CONTRIBUTION.tex
 
+%% \begin{figure}
+%% \centering
+%% \resizebox{1.0\linewidth}{!}{\input{gnu_foveated.tex}}
+
+%% \caption{Histogram depicting approximative per-invocation profilation and percentage of density distribution of 1000 magic instructions in milliseconds.}
+%% \label{fig:histogramfoveated}
+%% \end{figure}
+
 \section{Contribution}
+
+\begin{figure*}
+\parbox{.5\linewidth}{
+\centering
+\resizebox{1.0\linewidth}{!}{\input{gnu_non-foveated.tex}}
+\caption{Non-foveated ray tracing.}
+\label{fig:histogram_non-foveated}
+}
+\hfill
+\parbox{.5\linewidth}{
+\centering
+\resizebox{1.0\linewidth}{!}{\input{gnu_foveated.tex}}
+\caption{Foveated ray tracing.}
+\label{fig:histogram_foveated}
+}
+\end{figure*}
+
 The ray tracing renderer devised for the purpose of this study adheres to the model presented by Garc{\'i}a et al.: devised in DirectCompute using C$++$.
 The algorithm renders the scene with the help of three distinct steps that compiles a number of rays equal to that of the application window resolution, performs intersections tests on each ray with scene geometry to establish the closest intersected geometry, and finally draws the scene to the framebuffer using scene lights- and geometry in order to establish what areas of the scene are in shadow.
 The ray tracing algorithm is presented as pseudocode in algorithm \ref{algrt}.
