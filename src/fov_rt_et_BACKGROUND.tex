@@ -16,16 +16,16 @@ While acceleration structures, such as BVH trees, may offer great performance im
 
 \subsection{Eye tracking}
 Eye tracking is the process of sampling an observers gaze, often in relation to a surface such as a computer screen.
-For the purposes of eye tracking, one may use an eye tracker, which is a device used to establish and measure positions of an observer's eyes\cite{duchowski07}; such as \textit{fixations} and intermediate \textit{saccades}\cite{rayner98}.
-The most common eye tracking device type used today is possibly the optical eye tracker; which uses a sequence of video images to measure movement of the eyes\cite{duchowski07}.
+For the purposes of eye tracking, one may use an eye tracker, which is a device used to establish and measure positions of an observer's eyes~\cite{duchowski07}; such as \textit{fixations} and intermediate \textit{saccades}~\cite{rayner98}.
+The most common eye tracking device type used today is possibly the optical eye tracker; which uses a sequence of video images to measure movement of the eyes~\cite{duchowski07}.
 Recently, eye tracking technologies - although not a new subject to researchers - have become more accessible to the general public, mayhaps most notably with the recent Tobii EyeX Controller devkit.
 
 \subsection{Human vision}
-Human vision may be thought of as being subdivided in three distinct zones; the foveal, parafoveal, and peripheral vision\cite{rayner98}.
+Human vision may be thought of as being subdivided in three distinct zones; the foveal, parafoveal, and peripheral vision~\cite{rayner98}.
 The fovea, which makes out roughly $2$\degree\ of human eye-sight, is the area in which the human eye features the outmost acuity due to vast concentrations of visual receptors.
 As such, we position the fovea on the stimulus we wish to observe.
 Along the outer reaches of the fovea, and extending $5$\degree\ from the center of the fovea, lie the parafovea which, while still quite acute, is considerably less keen than the fovea.
-The remaining (majority) of the human vision we may classify as peripheral vision which, while not acute as fovea or parafovea, constitutes the remaining visual field of roughtly $135$\degree\ vertical- and $160$\degree\ horizontal vision\cite{guenter12}.
+The remaining (majority) of the human vision we may classify as peripheral vision which, while not acute as fovea or parafovea, constitutes the remaining visual field of roughtly $135$\degree\ vertical- and $160$\degree\ horizontal vision~\cite{guenter12}.
 We may refer to the decrease of the receptive qualities of human eye-sight as foveation.
 
 \subsection{Foveated rendering}
@@ -34,4 +34,4 @@ One might argue that vast amounts of processing power is spent on rendering high
 After all, a $5$\degree\ parafoveal area is likely a small component of most display systems.
 
 Hence, in real-time graphics - where time is of the essence - it may be benificial to render only those parts of a framebuffer which the eye may appreciate at high quality; reducing rendering complexity for a potentially large area of the display.
-Utilizing foveation in image processing is not a new idea\cite{levoy90}, yet one that seems to have escaped developers of real-time graphics, possibly due to the lack of low-latency eye tracking devices in consumer markets.
+Utilizing foveation in image processing is not a new idea~\cite{levoy90}, yet one that seems to have escaped developers of real-time graphics, possibly due to the lack of low-latency eye tracking devices in consumer markets.
