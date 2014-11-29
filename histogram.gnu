@@ -28,14 +28,16 @@ if(!exists("arg_data")) {
     pause -1 "Press any key to continue."
 }
 
-set terminal arg_terminal #set terminal postscript
-set output arg_output #set output '| ps2pdf - output.pdf'
+set terminal arg_terminal size 8cm, 4cm
+set output arg_output
 
-set size ratio 0.5
 set xtics nomirror
 set tic scale 0
 set yrange [0:]
 unset ytics
+
+# As to correct for the caption whitespace issue:
+set tmargin 0.2
 
 stats arg_data name "data" nooutput
 

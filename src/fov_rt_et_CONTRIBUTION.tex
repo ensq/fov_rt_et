@@ -5,16 +5,42 @@
 \begin{figure*}
 \parbox{.5\linewidth}{%
 \centering%
-\resizebox{1.0\linewidth}{!}{\input{gnu_non-foveated.tex}}
 \caption{Non-foveated ray tracing.}
-\label{fig:histogram_non-foveated}}
+\label{fig:histogram_non-foveated}
+\input{gnu_non-foveated.tex} % \resizebox{1.0\linewidth}{!}{\input{gnu_non-foveated.tex}}
+}
 \hfill%
 \parbox{.5\linewidth}{%
 \centering%
-\resizebox{1.0\linewidth}{!}{\input{gnu_foveated.tex}}
 \caption{Foveated ray tracing.}
-\label{fig:histogram_foveated}}
+\label{fig:histogram_foveated}
+\input{gnu_foveated.tex} % \resizebox{1.0\linewidth}{!}{\input{gnu_foveated.tex}}
+}
 \end{figure*}
+
+\begin{table*}[bp]
+\parbox{.5\linewidth}{
+\centering
+\begin{tabular}{l|llll}
+Stage & Avg. & Std. & Min. & Max.     \\ \hline
+Gen. Rays     &     &     &     &     \\
+Intersect     &     &     &     &     \\
+Color         &     &     &     &    
+\end{tabular}
+\caption{Tabular 1.}
+\label{tab:tabular1}}
+\hfill
+\parbox{.5\linewidth}{
+\centering
+\begin{tabular}{l|llll}
+Stage & Avg. & Std. & Min. & Max.     \\ \hline
+Gen. Rays     &     &     &     &     \\
+Intersect     &     &     &     &     \\
+Color         &     &     &     &    
+\end{tabular}
+\caption{Tabular 2.}
+\label{tab:tabular2}}
+\end{table*}
 
 The ray tracing renderer devised for the purpose of this study adheres to the model presented by Garc{\'i}a et al.: devised in DirectCompute using C$++$.
 The algorithm renders the scene with the help of three distinct steps that compiles a number of rays equal to that of the application window resolution, performs intersections tests on each ray with scene geometry to establish the closest intersected geometry, and finally draws the scene to the framebuffer using scene lights- and geometry in order to establish what areas of the scene are in shadow.
