@@ -209,8 +209,14 @@
 %  ****************************************
 %  *           PARAGRAPHING               *
 %  ****************************************
-%
-\parskip 5.5pt plus 1pt minus 1.5pt
+% The blank space after paragraphs has been modified as the EG guidelines
+% advices not to add any space after paragraphs, whereas the EG LaTeX style
+% clearly does use such spacing. As such, I've modified the style below by
+% changing the assignment of parskip from:
+% \parskip 5.5pt plus 1pt minus 1.5pt
+% ...to:
+\parskip 0pt
+
 \parindent 1em
 \partopsep 0pt plus 1pt
 \@lowpenalty   51
