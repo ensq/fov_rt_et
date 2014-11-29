@@ -8,8 +8,17 @@
 \usepackage{hyperref} % Urls.
 \usepackage{float} % Floaty fine figures.
 \usepackage{stfloats} % To allow placement of float* environment at bottom of page.
+\usepackage{pgf} % Used to round numbers to given number of significant figures.
+
 %\usepackage[skip=0pt]{caption}
 % ^ Consider as to reduce whitespace between figures, tables, and their captions.
+
+\newcommand*{\no}[1]{%
+    \pgfmathprintnumber[
+        fixed,
+        precision=3,
+        fixed zerofill=true,
+        ]{#1}}%
 
 \restylefloat*{figure}
 \restylefloat*{table}

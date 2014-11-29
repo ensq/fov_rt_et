@@ -36,8 +36,10 @@ set tic scale 0
 set yrange [0:]
 unset ytics
 
-# As to correct for the caption whitespace issue:
-set tmargin 0.2
+# As to correct for the caption whitespace issue (set depending on
+# whether or not the caption is above, or below, the figure): set
+#tmargin 0.2
+set bmargin 0.2
 
 stats arg_data name "data" nooutput
 
