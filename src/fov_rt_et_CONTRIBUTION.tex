@@ -1,29 +1,19 @@
 % fov_rt_et_CONTRIBUTION.tex
 
-%% \begin{figure}
-%% \centering
-%% \resizebox{1.0\linewidth}{!}{\input{gnu_foveated.tex}}
-
-%% \caption{Histogram depicting approximative per-invocation profilation and percentage of density distribution of 1000 magic instructions in milliseconds.}
-%% \label{fig:histogramfoveated}
-%% \end{figure}
-
 \section{Contribution}
 
 \begin{figure*}
-\parbox{.5\linewidth}{
-\centering
+\parbox{.5\linewidth}{%
+\centering%
 \resizebox{1.0\linewidth}{!}{\input{gnu_non-foveated.tex}}
 \caption{Non-foveated ray tracing.}
-\label{fig:histogram_non-foveated}
-}
-\hfill
-\parbox{.5\linewidth}{
-\centering
+\label{fig:histogram_non-foveated}}
+\hfill%
+\parbox{.5\linewidth}{%
+\centering%
 \resizebox{1.0\linewidth}{!}{\input{gnu_foveated.tex}}
 \caption{Foveated ray tracing.}
-\label{fig:histogram_foveated}
-}
+\label{fig:histogram_foveated}}
 \end{figure*}
 
 The ray tracing renderer devised for the purpose of this study adheres to the model presented by Garc{\'i}a et al.: devised in DirectCompute using C$++$.
