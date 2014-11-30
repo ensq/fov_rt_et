@@ -2,27 +2,17 @@
 
 \section{Conclusion}
 The scene used for the purpose of this experiment is a mesh consisting of $12$ vertices that are indexed to create $14$ triangles, which are scaled, rotated, and translated into the scene.
-This mesh, although positioned in a different manner in relation to the camera, is presented in figure~\ref{fig:fov}.
+This mesh is presented in figure~\ref{fig:fov}.
 Furthermore, the scene is lit using three pointlights; each of which may cast shadows.
 
-In order to render the scene, which rotates every given frame, the renderer computes three reflections thus repeating the intersection- and lighting stages of the algorithm three times per pixel.
+In order to render the scene, which rotates every given frame, the algorithm processes three reflections - thus repeating the intersection- and lighting stages of the algorithm three times per pixel.
 During the experiment, the higher-resolution parafoveal render target was locked to be positioned in the center the screen.
-As such, the eye tracking had no influence on the results.
+As such, eye tracking in-and-of-itself had no influence on the results.
 
-We collected elapsed times for each stage during $1000$ frames.
-If a stage was computed several times (computing reflections with intersection- and lighting stages) the elapsed times were concatenated.
-The mean values of these measurements are presented in milliseconds in table~\ref{tab:res}.
-
-\begin{table}[h]
-\begin{tabular}{lll}
-  & Non-foveated & Foveated \\
-  Generate Rays & 1.36\phantom{0} ms & 0.09 ms \\
-  Intersection & 12.32 ms & 1.05 ms \\
-  Lighting & 18.01 ms & 1.72 ms
-\end{tabular}
-\caption{Mean elapsed time in milliseconds for the ray tracing shader stages for non-foveated and foveated samples. Note that the latter two shader stages are performed multiple times (one per reflection); the elapsed times of which are concatenated for these samples.}
-\label{tab:res}
-\end{table}
+We collected elapsed times for each stage during $1000$ frames, and repeated the experiment for the foveated- and non-foveated ray tracing algorithm.
+If a stage was computed several times (reflections with intersection- and lighting stages) the elapsed times were concatenated.
+The mean-, standard deviation-, minimum-, and maximum values of these measurements are presented in tables \ref{tab:nonfoveated} and \ref{tab:foveated}, and are concatenated to present entire frametimes as histograms in figures \ref{fig:histogram_non-foveated} and \ref{fig:histogram_foveated}.
+The histograms present the distribution of frametimes, inside of standard deviation, in 50 bins, the spread of which might be explained by the rotation of the model during the experiment.
 
 From the measurements presented in table~\ref{tab:res}, we may establish that foveation reduced execution time of over $90\%$ in all three ray tracing stages.
 This reduction was significant enough to run the ray tracer in high-definition resolutions, and thus made it possible for us increase the application resolution to above that of $800\times 800$ which we were previously limited to.
