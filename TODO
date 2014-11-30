@@ -3,6 +3,7 @@ Abstract:
 * We present an open-source implementation of foveated real-time rendering demonstrating the potential performance benefits of foveation in ray tracing.
 
 Conclusion:
+* Mention that the histograms are subdivided into 50 bins.
 * Spread in histograms could be due to the, during the experiment, rotating model.
 * Other future improvements, mainly for user experience, include:
 * * Blurring edges of fovs to reduce their direct noticability.
