@@ -1,10 +1,24 @@
 % fov_rt_et_INTRODUCTION.tex
 \section{Introduction}
+Ray tracing is an image synthesis technique in which rays are used to determine scene- and geometry visibility.
+In computer graphics, rays typically originate from the observer view-point, based on the framebuffer texel grid, to determine framebuffer colors.
+Each ray subsequently identifies the closest scene element it may intersect, from which lighting, shadows, and other effects may be computed.
 
-Ray tracing has long since been used for computer graphics, both in offline and real-time scenarios, some real-time use-cases impressively stretching as far back as a 1987 CAD-application~\cite{stay87}.
-Recently, the fast progression of modern processors have accomodated for more extensive use of ray tracing technologies in real-time, as demonstrated by Intel Corporation with their reseach project Quake Wars: Ray Traced in 2009~\cite{pohl09}, an implementation of the Id Software video game Enemy Territory: Quake Wars, popularizing the idea of ray tracing renderers for consumer video games.
+Ray tracing has long since been used for computer graphics, both in offline and real-time scenarios, some real-time use-cases stretching as far back as a 1987 CAD-application~\cite{stay87}.
+Recently, the fast progression of modern processors have accomodated for more extensive use of ray tracing technologies in real-time, as demonstrated by Intel Corporation with Quake Wars: Ray Traced in 2009~\cite{pohl09}, an implementation of the Id Software video game Enemy Territory: Quake Wars, again popularizing the idea of ray tracing renderers for consumer video games.
 
-In 2012, Garc\'ia et al. presented a ray tracing model using DirectCompute~\cite{garcia12}; thus utilizing modern throughput-oriented many-core devices for accomplishing ray tracing in real-time.
-During implementation of a similar algorithm for a university project, we discovered that our video card was not keeping up to speed.
-Hence, we required a faster algorithm in order to ease development.
-We thus decided to accelerate the rendering using foveation to reduce the GPU workload.
+On the contrary, modern real-time graphics commonly employ the rasterization rendering technique.
+Rasterization technologies, which are often significantly faster than ray tracing algorithms to map scene geometry to a computer screen, require complicated methods to approximate effects such as shadows or reflections; effects that may be described as trivial in terms of ray tracing.
+Yet, rasterization techniques are often preferred to ray tracing renderers due to their superior speed and 'good-enough' results.
+
+However, due to the continuing increase in display resolution, in particular the emergence of 4K displays, computer graphics are struggling to keep up with the increasing number of pixels to process.
+To address this problem, Guenter et al. demonstrates that the computational complexity of high resolution imagery for real-time rasterization may be drastically reduced using foveation in coagency with modern eye tracking devices~\cite{guenter12}.
+
+In 2012, Garc\'ia et al. presented a ray tracing model using DirectCompute~\cite{garcia12}; thus utilizing modern throughput-oriented many-core devices to accomplish ray tracing in real-time.
+During implementation of a similar algorithm for a university project, we discovered that our video card was not keeping up to speed with higher resolutions.
+As such, we decided to accelerate the ray tracing algorithm by employing foveation to reduce GPU workload, and in turn investigate whether or not the benefits foveation has for rasterization, established by Guenter et al., extends to ray tracing and to determine the impact such acceleration may have on rendering performance.
+
+%% Some of the performance gains rasterization methodologies often have over ray tracing is that of efficient data coherence, the lack of which may induce high computational complexity.
+%% While the rasterization process may cache and share computed results, ray tracing techniques commonly eveluate each ray individually; especially considering each ray may collide with different geometry.
+%% Furthermore, complex geometry stresses the importance of acceleration structures for real-time ray tracing.
+%% While acceleration structures, such as BVH trees, may offer great performance improvements, high-resolution render targets, such as emergent 4k resolutions, may come at high initial costs.

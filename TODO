@@ -2,9 +2,6 @@ Abstract:
 * Remove paragraphs to reduce whitespace.
 * We present an open-source implementation of foveated real-time rendering demonstrating the potential performance benefits of foveation in ray tracing.
 
-Introduction:
-* Consider moving the ray tracing background description from section Background into Introduction.
-
 Contribution:
 * Spread in histograms could be due to the, during the experiment, rotating model.
 

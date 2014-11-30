@@ -1,20 +1,5 @@
 % fov_rt_et_BACKGROUND.tex
 \section{Background}
-\subsection{Ray tracing}
-Ray tracing is an image synthesis technique in which rays are used to determine scene- and geometry visibility.
-In computer graphics, rays often originate from the observer view-point based on the framebuffer texel grid in order to determine framebuffer colors.
-Each ray subsequently identifies the closest scene element it may intersect, from which lighting, shadows, and other effects may be computed.
-
-On the contrary, modern real-time graphics commonly use the rendering technique of rasterization.
-Rasterization technologies, which are often significantly faster than ray tracing methodologies to map scene geometry to a computer screen, often require complicated methods to approximate (often roughly) effects such as shadows or reflections; effects that might be described as trivial to achieve in terms of ray tracing.
-Yet, rasterization techniques are often preferred to ray tracing renderers due to their superior speed and 'good-enough' results.
-
-Some of the performance gains rasterization methodologies often have over ray tracing is that of efficient data coherence, the lack of which may induce high computational complexity.
-While the rasterization process may cache and share computed results, ray tracing techniques commonly eveluate each ray individually; especially considering each ray may collide with different geometry.
-Furthermore, complex geometry stresses the importance of acceleration structures for real-time ray tracing.
-While acceleration structures, such as BVH trees, may offer great performance improvements, high-resolution render targets, such as emergent 4k resolutions, may come at high initial costs.
-
-\subsection{Eye tracking}
 Eye tracking is the process of sampling an observers gaze, often in relation to a surface such as a computer screen.
 For the purposes of eye tracking, one may use an eye tracker, which is a device used to establish and measure positions of an observer's eyes~\cite{duchowski07}; such as \textit{fixations} and intermediate \textit{saccades}~\cite{rayner98}.
 The most common eye tracking device type used today is possibly the optical eye tracker; which uses a sequence of video images to measure movement of the eyes~\cite{duchowski07}.
