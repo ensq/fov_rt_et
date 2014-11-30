@@ -40,8 +40,8 @@ Color & \no{1.72431991} & \no{0.07007683999} & \no{1.56156} & \no{3.15844}
 \label{tab:tabular2}}
 \end{table*}
 
-The ray tracing renderer devised for the purpose of this study adheres to the model presented by Garc{\'i}a et al.: devised in DirectCompute using C$++$.
-The algorithm renders the scene with the help of three distinct steps that compiles a number of rays equal to that of the application window resolution, performs intersections tests on each ray with scene geometry to establish the closest intersected geometry, and finally draws the scene to the framebuffer using scene lights- and geometry in order to establish what areas of the scene are in shadow.
+The ray tracing renderer devised for the purpose of this study adheres to the model presented by Garc{\'i}a et al.~\cite{garcia12}: devised in DirectCompute using C$++$.
+The algorithm renders the scene using three distinct steps that compiles a number of rays equal to that of the application window resolution, performs intersections tests on each ray with scene geometry to establish the closest scene element, and finally draws the scene to the framebuffer using scene lights- and geometry in order to establish what areas of the scene are in shadow.
 The ray tracing algorithm is presented as pseudocode in algorithm \ref{algrt}.
 Note that some elements of the algorithm are not featured in-pseudo-code, such as the comparison of closest intersected scene geometry, in order to keep the code short and concise.
 
@@ -98,19 +98,22 @@ Being a consumer-level developer's kit, the device tracking may bring about a ji
 As this is considerably less noticable with a larger area (giving the eye tracking device more time to garner gaze positional data when the user moves his or her eyes); rendering the entirety of the parafoveal vision (5\degree ) at high quality was deemed more appropriate.
 After all, the purposes of foveated rendering is to reduce computational complexity whilst maintaining percieved scene quality.
 
-For our setup, the observer is positioned 700mm from the screen (which is the distance relayed appropriate by the device).
+For our setup, the observer is positioned roughly 700mm from the screen (which is the distance relayed appropriate by the device).
 The application window resolution is that of $1152\times 1152$, a resolution chosen due to it being the highest our system setup could display whilst keeping the resolution square.
 A $5$\degree\ parafovea thus bring about an area of roughly $31$mm$\times $$31$mm, which represents, for the utilized screen, roughly $123\times 123$~pixels; a small percentage of the application window resolution.
 Note, however, that this component would be considerably smaller should the application run at even higher resolutions.
-In fact, presuming the same system setup and distance to the screen, the pixel resolution within the observer's foveal vision should remain constant.
 
 For the peripheral vision, or the low-quality render target, we chose to render the scene at only a fourth of the full-resolution.
 Accordingly, our rendering algorithm is performed in an additional two steps; wherein the scene is rendered at full-resolution in a grid of only $123\times 123$ pixels, while the rest of the framebuffer is rendered at a fourth of full-resolution and subsequently upscaled to fit the application window.
 The high-resolution parafoveal framebuffer is then copied onto the screen framebuffer at the location where the observer is currently focusing his or her gaze.
 
+See figure~\ref{fig:fov} for a sample image of the devised foveated scene.
+Note that the surrounding scenery, including the cube's reflection in the plane, is rendered at a lower resolution.
+This particular scene, on the contrary to the experiment, renders the peripheral areas in an eighth of the full-resolution in order to make the foveated effect more prominent and noticable for the sake of visualization.
+
 \begin{figure}[p]
   \centering
   \includegraphics[width=1.0\linewidth]{img/fov_rt_et.png}
-  \caption{An $800\times 800$ foveated scene. The observer's gaze is positioned on the cube. Note that the surrounding scenery, including the cube's reflection in the plane, is rendered at a lower resolution. This particular scene, on the contrary to the experiment, renders the peripheral areas in an eighth of the full-resolution in order to make the foveated effect more prominent and noticable for the sake of visualization.}
+  \caption{An $800\times 800$ foveated scene. The observer's gaze is positioned on the cube.}
   \label{fig:fov}
 \end{figure}

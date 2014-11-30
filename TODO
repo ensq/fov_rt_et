@@ -2,10 +2,8 @@ Abstract:
 * Remove paragraphs to reduce whitespace.
 * We present an open-source implementation of foveated real-time rendering demonstrating the potential performance benefits of foveation in ray tracing.
 
-Contribution:
-* Spread in histograms could be due to the, during the experiment, rotating model.
-
 Conclusion:
+* Spread in histograms could be due to the, during the experiment, rotating model.
 * Other future improvements, mainly for user experience, include:
 * * Blurring edges of fovs to reduce their direct noticability.
 * * Use a stencil algorithm / stencil buffer for the purposes of rendering circular FOVs rather than square/rectangular ones. With no direct corners, the FOVs may be less noticable.
@@ -19,3 +17,4 @@ Notes:
 * Try to get rid of as many section as possible.
 * If you need additional space, try using another package for the ray tracing pseudo code.
 * Look up some tips and tricks for reducing whitespace if you need more space.
+* If you need space, you could always remove the subsections under the Background section, as the headers themselves take up a whole lot of room.
