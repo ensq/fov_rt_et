@@ -1,15 +1,3 @@
-Abstract:
-* Remove paragraphs to reduce whitespace.
-* We present an open-source implementation of foveated real-time rendering demonstrating the potential performance benefits of foveation in ray tracing.
-
-Conclusion:
-* Mention that the histograms are subdivided into 50 bins.
-* Spread in histograms could be due to the, during the experiment, rotating model.
-* Other future improvements, mainly for user experience, include:
-* * Blurring edges of fovs to reduce their direct noticability.
-* * Use a stencil algorithm / stencil buffer for the purposes of rendering circular FOVs rather than square/rectangular ones. With no direct corners, the FOVs may be less noticable.
-* As such, we conclude that the performance benefits of foveation demonstrated by previous studies (cite Microsoft paper) in rasterization does extend to ray tracing.
-
 Other:
 * Add attribution and thank David for contributing with the model. Consider having the attribution and link to the solution under the same section.
 * The submission has to be anonymous. Remove name and things (look up in the LaTeX style how this is to be done).

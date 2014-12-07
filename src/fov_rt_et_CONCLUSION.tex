@@ -1,40 +1,40 @@
 % fov_rt_et_CONCLUSION.tex
 
 \section{Conclusion}
-The scene used for the purpose of this experiment is a mesh consisting of $12$ vertices that are indexed to create $14$ triangles, which are scaled, rotated, and translated into the scene.
+The experiment scene is a mesh consisting of $12$ vertices that are indexed to create $14$ triangles, which are scaled, rotated, and translated into the scene.
 This mesh is presented in figure~\ref{fig:fov}.
-Furthermore, the scene is lit using three pointlights; each of which may cast shadows.
-
 In order to render the scene, which rotates every given frame, the algorithm processes three reflections - thus repeating the intersection- and lighting stages of the algorithm three times per pixel.
-During the experiment, the higher-resolution parafoveal render target was locked to be positioned in the center the screen.
+Furthermore, the scene is lit using three pointlights; each of which may cast shadows.
+During the experiment, the higher-resolution parafoveal render target is positioned in the center the screen.
 As such, eye tracking in-and-of-itself had no influence on the results.
 
-We collected elapsed times for each stage during $1000$ frames, and repeated the experiment for the foveated- and non-foveated ray tracing algorithm.
-If a stage was computed several times (reflections with intersection- and lighting stages) the elapsed times were concatenated.
-The mean-, standard deviation-, minimum-, and maximum values of these measurements are presented in tables \ref{tab:nonfoveated} and \ref{tab:foveated}, and are concatenated to present entire frametimes as histograms in figures \ref{fig:histogram_non-foveated} and \ref{fig:histogram_foveated}.
-The histograms present the distribution of frametimes, inside of standard deviation, in 50 bins, the spread of which might be explained by the rotation of the model during the experiment.
+We collect elapsed times for each stage during $1000$ frames, and repeat the experiment for the foveated- and non-foveated ray tracing algorithm.
+For stages computed several times (reflections with intersection- and lighting stages) we concatenate measurements.
+The mean-, standard deviation-, minimum-, and maximum values of these measurements are presented in tables \ref{tab:nonfoveated} and \ref{tab:foveated}; resulting frametimes of which are presented as histograms in figures \ref{fig:histogram_non-foveated} and \ref{fig:histogram_foveated}.
+The histograms present the distribution of frametimes, inside of standard deviation, in 50 bins.
+The cause behind the spread of the distributions are uncertain, but might be explained by model rotation.
 
-From the measurements presented in table~\ref{tab:res}, we may establish that foveation reduced execution time of over $90\%$ in all three ray tracing stages.
-This reduction was significant enough to run the ray tracer in high-definition resolutions, and thus made it possible for us increase the application resolution to above that of $800\times 800$ which we were previously limited to.
+From measurements presented in tables \ref{tab:nonfoveated} and \ref{tab:foveated}, we may establish that foveation reduced execution time of over $90\%$ in all ray tracing stages.
+This reduction is significant enough to run the ray tracer in high-definition resolutions on the target platform, and thus made it possible for us increase the previously limited application resolution.
 
-Furthermore, the foveated rendering is mostly transparent and not too noticable.
-Although gaze position latency and aliasing issues in the low resolution render target (in the peripheral vision) is noticable, it does not particularily disrupt the observer's perception of the scene.
-That being said, foveation accomodating for considerably better performance is a good-enough compromise.
+At quick glances, the foveated rendering is not too noticable.
+However, gaze position latency and aliasing issues in peripheral vision can quickly disrupt an oberver's perception of the scene, and thus pose big user experience issues.
+That being said, foveation accomodating for considerably better performance may be a good-enough compromise for some applications.
+As such, we conclude that performance benefits induced by foveation, demonstrated by pervious studies~\cite{guenter12} with rasterization, does extend to ray tracing.
 
 \subsection{Future work}
-Currently, the foveation methodology used causes somewhat severe overdraw, which could worsen should additional FOVs be added.
-While the overdraw, with only peripheral and parafoveal render targets, causes only those rays positioned behind the high resolution FOV (spanning a fourth of the high-resolution number of rays) to be computed without having any impact on the scene, the number of redundant rays cast may be significantly increased with the addition of more FOVs, especially as more highly detailed FOVs would suffer overdraw.
+Currently, the foveation algorithm causes somewhat severe overdraw, which could worsen should additional FOVs be added.
+While the overdraw, using only peripheral and parafoveal render targets, causes only pixels positioned behind the high resolution render target to be redundantly evaluated, the number of redundant rays may be significantly increased with additional FOVs, especially as higher detailed FOVs would suffer overdraw.
 Note, however, that the current implementation only causes overdraw of a portion of the low-resolution peripheral FOV.
 
 Furthermore, and an issue more increasingly a problem with quality reduction of peripheral and parafoveal views, aliasing issues outside of the foveal area may cause jitter in the peripheral vision of the observer.
-While advanced anti-aliasing techniques may be considered to lessen this issue, blurring might also be a viable candidate to reduce such jitter; especially along the borders of FOVs where varying levels of quality is made particularily apperent.
+While advanced anti-aliasing techniques may be utilized to lessen the issue, blurring might also be a viable candidate to reduce such jitter; especially along the borders of FOVs where varying levels of quality is made particularily apperent.
+An additional improvement to render foveation edges less opaque is to use a stencil algorithm to render circular FOVs.
+With no corners, edge foveation differences may be less noticable.
 
-Additionally, while we may expect consumer-level eye tracking devices to improve in terms of gaze positional latency and accuracy, these attributes are vital to real-time rendering foveation in order to maintain the illusion of consistent quality in a scene.
-The latency in garnering positional data for a gaze-contingent application, such as the one presented in this document, may cause the application to fall behind.
-In terms of real-time rendering, this causes the high-quality render target that the user ought be seeing, to lag behind and thus causing the user to look upon a lower quality render of the scene he or she expects.
-Most of the time, this is only an issue if the eye tracker temporarily cannot locate an observer's eyes, or in combination with accuracy issues.
+Additionally, while consumer-level eye tracking devices are expected improve in terms of gaze positional latency and accuracy, these attributes are vital to real-time foveation to maintain the illusion of consistent quality in a scene - as the latency in garnering positional data for a gaze-contingent application, may cause an application to fall behind.
+In terms of real-time rendering, this may cause foveation to lag behind; causing users to percieve lower quality renders of the scene he or she expects.
 
-Another issue presenting itself in terms of eye tracking hardware is that of gaze positional accuracy, which may cause the high quality render to be offset erronously in relation to an observer's gaze.
-In particular, this was discovered to be an issue for especially small FOVs - such as an high-quality foveal render target (making out only $2$\degree\ of the viewer's vision).
-
+Another issue in terms of eye tracking hardware is gaze positional accuracy, which may cause high-resolution foveation to be offset erronously in relation to an observer's gaze.
+In particular, this is an issue for especially small FOVs - such as a foveal render target ($2$\degree\ of the viewer's vision).
 However, these hardware issues are expected to improve in the near-future; hopefully as eye tracking devices become more common in consumer-markets.

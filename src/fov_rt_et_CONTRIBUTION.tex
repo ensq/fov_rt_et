@@ -43,7 +43,7 @@ Color & \no{1.72431991} & \no{0.07007683999} & \no{1.56156} & \no{3.15844}
 The ray tracing renderer devised for the purpose of this study adheres to the model presented by Garc{\'i}a et al.~\cite{garcia12}: devised in DirectCompute using C$++$.
 The algorithm renders the scene using three distinct steps that compiles a number of rays equal to that of the application window resolution, performs intersections tests on each ray with scene geometry to establish the closest scene element, and finally draws the scene to the framebuffer using scene lights- and geometry in order to establish what areas of the scene are in shadow.
 The ray tracing algorithm is presented as pseudocode in algorithm \ref{algrt}.
-Note that some elements of the algorithm are not featured in-pseudo-code, such as the comparison of closest intersected scene geometry, in order to keep the code short and concise.
+Note that some elements are not featured in the algorithm in order to keep the pseudo code concise.
 
 \begin{algorithm}
 \begin{algorithmic}[1]

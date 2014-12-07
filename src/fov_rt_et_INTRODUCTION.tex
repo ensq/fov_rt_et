@@ -15,7 +15,8 @@ However, due to the continuing increase in display resolution, in particular the
 To address this problem, Guenter et al. demonstrates that the computational complexity of high resolution imagery for real-time rasterization may be drastically reduced using foveation in coagency with modern eye tracking devices~\cite{guenter12}.
 
 In 2012, Garc\'ia et al. presented a ray tracing model using DirectCompute~\cite{garcia12}; thus utilizing modern throughput-oriented many-core devices to accomplish ray tracing in real-time.
-During implementation of a similar algorithm for a university project, we discovered that our video card was not keeping up to speed with higher resolutions.
+During implementation of a similar algorithm, the source code of which is open-source~\cite{raytracer}, we discovered that the target platform video card was not keeping up to speed with higher resolutions.
+
 As such, we decided to accelerate the ray tracing algorithm by employing foveation to reduce GPU workload, and in turn investigate whether or not the benefits foveation has for rasterization, established by Guenter et al., extends to ray tracing and to determine the impact such acceleration may have on rendering performance.
 
 %% Some of the performance gains rasterization methodologies often have over ray tracing is that of efficient data coherence, the lack of which may induce high computational complexity.
