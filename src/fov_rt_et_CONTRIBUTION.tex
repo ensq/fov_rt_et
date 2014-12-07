@@ -73,7 +73,7 @@ Using this information, we may render only parts of the application window - whe
 Since, as described in algorithm \ref{algrt}, the total number of computed rays is based off the texel grid of the framebuffer this may drastically reduce the number of rays required to render a scene.
 
 \subsection{Hardware}
-For the purpose of this experiment, we make use of the Tobii EyeX Devkit Controller, which is a consumer-level corneal-reflection eye tracking device, which may the position the gaze of an oberserver on a computer screen.
+For the purpose of this experiment, we make use of the Tobii EyeX Devkit Controller, which is a consumer-level corneal-reflection eye tracking device, which may the position the gaze of an observer on a computer screen.
 The EyeX controller, while still a developer's prototype variant, is a fairly competent device; the consumer version expected to be released later this year.
 
 The experiment is performed on a Windows~8.1 system with the following specifications:
@@ -89,14 +89,14 @@ For the screen, we use a $23''$ $510$mm~$\times$~$287$mm Samsung~Syncmaster~$234
 For retrieval of gaze positional data and communication with the eye tracking device, we utilize the Tobii C/C$++$~SDK.
 
 In order to achieve varying levels of quality - or resolution - in the field-of-vision, the rendering process is subdivided into a number of 'FOV's (short for fovea, parafovea, etc.); each it's own render target.
-Using an arbitrary of number these FOVs, we may vary the quality of the rendered scene accross the user's field of vision.
+Using an arbitrary of number these FOVs, we may vary the quality of the rendered scene across the user's field of vision.
 For the purpose of this study, although FOVs for both foveal-, parafoveal-, and peripheral vision have been prototyped, we limit the variance in quality to that of parafoveal and peripheral vision.
 Thus, we render the scene at two different resolutions during the experiment; corresponding to parafoveal- and peripheral vision.
 
 This is due to the EyeX controller device.
 Being a consumer-level developer's kit, the device tracking may bring about a jittery render target when the designated area is as small as $2$\degree\ of the observer's view.
-As this is considerably less noticable with a larger area (giving the eye tracking device more time to garner gaze positional data when the user moves his or her eyes); rendering the entirety of the parafoveal vision (5\degree ) at high quality is deemed more appropriate for the equipment at hand.
-After all, the purposes of foveated rendering is to reduce computational complexity whilst maintaining percieved scene quality.
+As this is considerably less noticeable with a larger area (giving the eye tracking device more time to garner gaze positional data when the user moves his or her eyes); rendering the entirety of the parafoveal vision (5\degree ) at high quality is deemed more appropriate for the equipment at hand.
+After all, the purposes of foveated rendering is to reduce computational complexity whilst maintaining perceived scene quality.
 
 For our setup, the observer is positioned roughly 700mm from the screen (which is the distance relayed appropriate by the device).
 The application window resolution is that of $1152\times 1152$, a resolution chosen due to it being the highest our system setup could display whilst keeping the resolution square.
@@ -109,4 +109,4 @@ The high-resolution parafoveal framebuffer is then copied onto the screen frameb
 
 See figure~\ref{fig:fov} for a sample image of the devised foveated scene.
 Note that the surrounding scenery, including the cube's reflection in the plane, is rendered at a lower resolution.
-This particular scene, on the contrary to the experiment, renders the peripheral areas in an eighth of the full-resolution in order to make the foveated effect more prominent and noticable for the sake of visualization.
+This particular scene, on the contrary to the experiment, renders the peripheral areas in an eighth of the full-resolution in order to make the foveated effect more prominent and noticeable for the sake of visualization.
