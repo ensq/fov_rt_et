@@ -1,9 +1,0 @@
-Other:
-* Add attribution and thank David for contributing with the model. Consider having the attribution and link to the solution under the same section.
-* The submission has to be anonymous. Remove name and things (look up in the LaTeX style how this is to be done).
-
-Notes:
-* Try to get rid of as many section as possible.
-* If you need additional space, try using another package for the ray tracing pseudo code.
-* Look up some tips and tricks for reducing whitespace if you need more space.
-* If you need space, you could always remove the subsections under the Background section, as the headers themselves take up a whole lot of room.
