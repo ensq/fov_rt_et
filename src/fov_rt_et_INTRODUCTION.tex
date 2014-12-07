@@ -7,7 +7,7 @@ Each ray subsequently identifies the closest scene element it may intersect, fro
 Ray tracing has long since been used for computer graphics, both in offline and real-time scenarios, some real-time use-cases stretching as far back as a 1987 CAD-application~\cite{stay87}.
 Recently, the fast progression of modern processors have accomodated for more extensive use of ray tracing technologies in real-time, as demonstrated by Intel Corporation with Quake Wars: Ray Traced in 2009~\cite{pohl09}, an implementation of the Id Software video game Enemy Territory: Quake Wars, again popularizing the idea of ray tracing renderers for consumer video games.
 
-On the contrary, modern real-time graphics commonly employ the rasterization rendering technique.
+On the contrary, modern real-time graphics commonly employ the rendering technique of rasterization.
 Rasterization technologies, which are often significantly faster than ray tracing algorithms to map scene geometry to a computer screen, require complicated methods to approximate effects such as shadows or reflections; effects that may be described as trivial in terms of ray tracing.
 Yet, rasterization techniques are often preferred to ray tracing renderers due to their superior speed and 'good-enough' results.
 
@@ -17,7 +17,8 @@ To address this problem, Guenter et al. demonstrates that the computational comp
 In 2012, Garc\'ia et al. presented a ray tracing model using DirectCompute~\cite{garcia12}; thus utilizing modern throughput-oriented many-core devices to accomplish ray tracing in real-time.
 During implementation of a similar algorithm, the source code of which is open-source~\cite{raytracer}, we discovered that the target platform video card was not keeping up to speed with higher resolutions.
 
-As such, we decided to accelerate the ray tracing algorithm by employing foveation to reduce GPU workload, and in turn investigate whether or not the benefits foveation has for rasterization, established by Guenter et al., extends to ray tracing and to determine the impact such acceleration may have on rendering performance.
+As such, we decided to accelerate the ray tracing algorithm by employing foveation to reduce GPU workload, and in turn investigate whether or not the benefits foveation has for rasterization, established by Guenter et al., extends to ray tracing.
+Thus, we strive to determine the impact acceleration by foveation may have on rendering performance for a modern ray tracing algorithm.
 
 %% Some of the performance gains rasterization methodologies often have over ray tracing is that of efficient data coherence, the lack of which may induce high computational complexity.
 %% While the rasterization process may cache and share computed results, ray tracing techniques commonly eveluate each ray individually; especially considering each ray may collide with different geometry.
