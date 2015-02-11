@@ -874,7 +874,7 @@ submitted to COMPUTER GRAPHICS \textit{Forum} #1.%
 }%
 
 \newcommand\p@confSubmissionText[1]{%
-submitted to EUROGRAPHICS #1.%
+\phantom{submitted to EUROGRAPHICS #1.}%
 }%
 \newcommand\p@SpecialIssueSubmissionText[1]{%
 submitted to \textit{#1}%
@@ -906,11 +906,11 @@ submitted to \textit{#1}%
 \def\ps@titlepage{\let\@mkboth\@gobbletwo
  \def\@oddhead{\raisebox{\z@}[8pt][1pt]{\parbox{\textwidth}{\small
    \parbox[t]{.7\textwidth}{\sloppy\raggedright
-     EUROGRAPHICS \p@EGyear{} / \p@ConfEditors{}\\
-     \p@ConfEditorStrg}% (Guest Editors)}
+     \phantom{EUROGRAPHICS \p@EGyear{} / \p@ConfEditors{}}
+     \phantom{\p@ConfEditorStrg}}% (Guest Editors)}
    \hfill
-   \textit{Volume \j@volume} (\textit{\p@ConfYear\/}),
-   \textit{Number \j@issue}}%
+   \phantom{\textit{Volume \j@volume} (\textit{\p@ConfYear\/}),
+   \textit{Number \j@issue}}}%
  }%
 }
  \def\@oddfoot{{\tiny\raisebox{\z@}[8pt][1pt]{\parbox[t]{18pc}{\sloppy
